@@ -1,6 +1,6 @@
 <?php
 
-                 //Dominique
+// Dominique
 class Database
 {
     private $dns = 'mysql:host=localhost;dbname=ecommerce;charset=utf8';

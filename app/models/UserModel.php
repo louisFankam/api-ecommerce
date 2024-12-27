@@ -1,5 +1,6 @@
 <?php 
-require_once '../config/database.php';
+
+require_once __DIR__ . '../../config/database.php';
 
 class UserModel {
     private $conn;
@@ -16,12 +17,12 @@ class UserModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // fonction qui recupere un utilisateur par son email
+    // fonction qui vérifie si l'utilisateur existe a partir de l'email
     public function getUserByEmail($email){
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->execute($email);
+        $stmt->execute([$email]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
     
     // fonction qui ajoute un utilisateur
